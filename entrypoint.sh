@@ -120,6 +120,7 @@ EOF
 
 # Starting nzbget
 if [[ ${1} == 'nzbget' ]]
+then
   $NZBGET -c ${NZBGET_CONF} -o outputmode=log "${@:2}"
 else
   exec "$@"
