@@ -23,7 +23,18 @@ ENV NZBBET_ControlPassword ''
 
 ENV SHOW_CONFIG false
 
-RUN apt-get update && apt-get install -y nzbget unrar-free unzip p7zip par2 uudeview openssl ca-certificates && apt-get clean
+RUN apt-get update && apt-get install -y \
+  nzbget \
+  unrar-free \
+  unzip \
+  p7zip \
+  par2 \
+  uudeview \
+  openssl \
+  ca-certificates \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
+
 RUN mkdir -p -m 775 /nzbget/storage && mkdir -p -m 775 /nzbget/nzb
 
 COPY entrypoint.sh /entrypoint.sh
